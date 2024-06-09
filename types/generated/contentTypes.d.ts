@@ -362,32 +362,28 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiTestTypeTestType extends Schema.CollectionType {
-  collectionName: 'test_types';
+export interface ApiTaskTask extends Schema.CollectionType {
+  collectionName: 'tasks';
   info: {
-    singularName: 'test-type';
-    pluralName: 'test-types';
-    displayName: 'test_type';
+    singularName: 'task';
+    pluralName: 'tasks';
+    displayName: 'task';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    test: Attribute.Boolean;
+    name: Attribute.String;
+    discription: Attribute.Text;
+    date: Attribute.DateTime;
+    isExpired: Attribute.Boolean;
+    status: Attribute.Enumeration<['todo', 'progress', 'done']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::test-type.test-type',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::test-type.test-type',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -828,7 +824,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::test-type.test-type': ApiTestTypeTestType;
+      'api::task.task': ApiTaskTask;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
