@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_types",
+  "info": {
+    "singularName": "test-type",
+    "pluralName": "test-types",
+    "displayName": "test_type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "test": {
+      "type": "boolean"
+    }
+  }
+}
